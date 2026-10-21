@@ -1,6 +1,6 @@
 [project]
 name = "simple-permutation-parity"
-version = "0.1.0"
+version = "0.1.1"
 description = "Determines whether a permutation is even or odd, given either in one-line notation or as a list of cycle lengths."
 requires-python = ">=3.10"
 dependencies = []
