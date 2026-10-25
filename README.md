@@ -19,3 +19,10 @@ print(parity_from_cycles([3, 1]))     #  1
 This exists because computing parity via inversion counting is O(n^2), while decomposing into cycles is O(n) and trivially verifiable. The trade-off: we allocate a visited-flags array of size n, so peak memory is 2n rather than in-place.
 
 Edge cases to be aware of: `permutation_parity` rejects anything that is not a genuine permutation of `{0..n-1}` — duplicate values, out-of-range entries, and non-int types (including `bool`, which is a subclass of `int` but not accepted) all raise `ValueError`. `parity_from_cycles` permits a cycle length of zero; it contributes `(0 - 1) = -1` transpositions faithfully rather than being silently dropped, so pass real cycle lengths only.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
